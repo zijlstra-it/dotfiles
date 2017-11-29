@@ -13,27 +13,29 @@ MY_HOME := $$HOME
 default: help
 
 help:
-    @echo "usage:"
-    @echo "  install"
-    @echo "  clean"
+	@echo "usage:"
+	@echo "  install"
+	@echo "  clean"
 
 install:
-    cp -p ${MY_HOME}/.bash_profile ${MY_HOME}/.bash_profile.PRE_DOTFILES
-    /bin/ln -nsf .bash_profile ${MY_HOME}/git/dotfiles/files/bash/init.bash 
-    /bin/ln -nsf $$file ${MY_HOME}/git/dotfiles/files ; \
+	cp -p ${MY_HOME}/.bash_profile ${MY_HOME}/.bash_profile.PRE_DOTFILES
+	/bin/ln -nsf .bash_profile ${MY_HOME}/git/dotfiles/files/bash/init.bash 
+	/bin/ln -nsf $$file ${MY_HOME}/git/dotfiles/files 
 
-    OS := $(shell uname)
-    ifeq $(OS) Darwin
+	OS := $(shell uname)
+	ifeq $(OS) Darwin
     # Run MacOS-init.sh
-    else
+	echo "Darwin"
+	else
     # Run Linux-init.sh
-    endif
+	echo "Darwin"
+	endif
 
 clean:
     # remove the links
-    rm -f ${MY_HOME}/.bash_profile
-    rm -f ${MY_HOME}/bin
+	rm -f ${MY_HOME}/.bash_profile
+	rm -f ${MY_HOME}/bin
     # restore any backups previously created
-    cp -p ${MY_HOME}/.bash_profile ${MY_HOME}/.bash_profile.PRE_DOTFILES
+	cp -p ${MY_HOME}/.bash_profile ${MY_HOME}/.bash_profile.PRE_DOTFILES
 
 .PHONY: install clean
