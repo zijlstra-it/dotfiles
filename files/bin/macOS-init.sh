@@ -4,6 +4,7 @@
 # See also:
 # https://github.com/mathiasbynens/dotfiles
 # https://github.com/Wilto/dotfiles/blob/master/bin/osxdefaults
+# https://github.com/geerlingguy/dotfiles/blob/master/.osx
 
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
@@ -355,7 +356,7 @@ defaults write com.apple.terminal SecureKeyboardEntry -bool true
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 
 # Install the Cobalt2 theme for iTerm
-open "cobalt2.itermcolors"
+open "files/cobalt2.itermcolors"
 
 # -----------------------------------------------------------------------------
 # OTHER
@@ -364,11 +365,8 @@ open "cobalt2.itermcolors"
 # Save to disk (not to iCloud) by default
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
-# Set a custom wallpaper image. `DefaultDesktop.jpg` is already a symlink, and
-# all wallpapers are in `/Library/Desktop Pictures/`. The default is `Wave.jpg`.
-#rm -rf ~/Library/Application Support/Dock/desktoppicture.db
-#sudo rm -rf /System/Library/CoreServices/DefaultDesktop.jpg
-#sudo ln -s /path/to/your/image /System/Library/CoreServices/DefaultDesktop.jpg
+# Set a custom wallpaper image. 
+osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/Library/Desktop Pictures/Yosemite 5.jpg"'
 
 # Prevent Time Machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true

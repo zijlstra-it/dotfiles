@@ -4,9 +4,6 @@ set autoindent
 set hlsearch
 set showmatch
 
-" SET COLOR SCHEME
-":colorscheme sole
-
 " ENABLE PLUGINS IF INSTALLED
 filetype plugin on
 

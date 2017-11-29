@@ -1,18 +1,27 @@
-#Fix Locale
-LANG="en_US.UTF-8"
-LC_COLLATE="en_US.UTF-8"
-LC_CTYPE="en_US.UTF-8"
-LC_MESSAGES="en_US.UTF-8"
-LC_MONETARY="en_US.UTF-8"
-LC_NUMERIC="en_US.UTF-8"
-LC_TIME="en_US.UTF-8"
-LC_ALL=
-export LC_COLLATE LC_CTYPE LC_MESSAGES LC_MONETARY LC_NUMERIC LC_TIME
-export PROMPT_COMMAND="echo -ne '\033]0;${USER}@macbook\007';$PROMPT_COMMAND"
+# ~/git/dotfiles/bash/prompt.bash
+#
+# - PROMPT_COMMAND for Terminal titles.
+# - Incorporate Git information.
+# - Use fancy colors based on active user and local or remote host.
+#
+
+# Colors
+local BLUE="\[\033[0;34m\]"
+local NO_COLOR="\[\e[0m\]"
+local GREEN="\[\033[0;32m\]"
+local LIGHT_GREEN="\[\033[1;32m\]"
+local RED="\[\033[0;31m\]"
+local LIGHT_RED="\[\033[1;31m\]"
+local WHITE="\[\033[1;37m\]"
+local YELLOW="\[\033[0;33m\]"
+local PURPLE="\[\033[1;35m\]"
+
+# PROMPT Command 
+export PROMPT_COMMAND="echo -ne '\033]0;${USER}@${HOSTNAME}\007';$PROMPT_COMMAND"
 
 # Source git prompt script
-if [ -f ~/.git-prompt.sh ]; then
-  source ~/.git-prompt.sh
+if [ -f ~/bin/git-prompt.sh ]; then
+  source ~/bin/git-prompt.sh
   GIT_PS1_SHOWUPSTREAM="verbose git legacy"
   GIT_PS1_SHOWDIRTYSTATE="true"
   GIT_PS1_DESCRIBE_STYLE="branch"
