@@ -18,9 +18,9 @@ help:
 	@echo "  clean"
 
 install:
-	cp -p ${MY_HOME}/.bash_profile ${MY_HOME}/.bash_profile.PRE_DOTFILES
-	/bin/ln -nsf .bash_profile ${MY_HOME}/git/dotfiles/files/bash/init.bash 
-	/bin/ln -nsf $$file ${MY_HOME}/git/dotfiles/files 
+	@cp -p ${MY_HOME}/.bash_profile ${MY_HOME}/.bash_profile.PRE_DOTFILES
+	@/bin/ln -nsf ${MY_HOME}/git/dotfiles/files/bash/init.bash .bash_profile
+	@/bin/ln -nsf ${MY_HOME}/git/dotfiles/files/bash .bash
 
 	OS := $(shell uname)
 	ifeq $(OS) Darwin
@@ -36,6 +36,6 @@ clean:
 	rm -f ${MY_HOME}/.bash_profile
 	rm -f ${MY_HOME}/bin
     # restore any backups previously created
-	cp -p ${MY_HOME}/.bash_profile ${MY_HOME}/.bash_profile.PRE_DOTFILES
+	cp -p ${MY_HOME}/.bash_profile.PRE_DOTFILES ${MY_HOME}/.bash_profile
 
 .PHONY: install clean
