@@ -356,7 +356,7 @@ defaults write com.apple.terminal SecureKeyboardEntry -bool true
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 
 # Install the Cobalt2 theme for iTerm
-open "files/cobalt2.itermcolors"
+open "files/iterm/cobalt2.itermcolors"
 
 # -----------------------------------------------------------------------------
 # OTHER

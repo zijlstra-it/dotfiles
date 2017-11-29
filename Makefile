@@ -19,15 +19,16 @@ help:
 
 install:
 	@cp -p ${MY_HOME}/.bash_profile ${MY_HOME}/.bash_profile.PRE_DOTFILES
-	@/bin/ln -nsf ${MY_HOME}/git/dotfiles/files/bash/init.bash .bash_profile
-	@/bin/ln -nsf ${MY_HOME}/git/dotfiles/files/bash .bash
+	@/bin/ln -nsf ${MY_HOME}/git/dotfiles/files/bash/init.bash ${MY_HOME}/.bash_profile
+	@/bin/ln -nsf ${MY_HOME}/git/dotfiles/files/bash ${MY_HOME}/.bash
+	@/bin/ln -nsf ${MY_HOME}/git/dotfiles/files/bin ${MY_HOME}/bin
 
-	OS := $(shell uname)
+	@OS := $(shell uname)
 	ifeq $(OS) Darwin
-    # Run MacOS-init.sh
+	# Run MacOS-init.sh
 	echo "Darwin"
 	else
-    # Run Linux-init.sh
+	# Run Linux-init.sh
 	echo "Darwin"
 	endif
 
