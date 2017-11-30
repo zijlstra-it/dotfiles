@@ -13,8 +13,8 @@ LIGHT_GREEN="\[\033[1;32m\]"
 RED="\[\033[0;31m\]"
 LIGHT_RED="\[\033[1;31m\]"
 WHITE="\[\033[1;37m\]"
-YELLOW="\[\033[0;33m\]"
-PURPLE="\[\033[1;35m\]"
+YELLOW_BOLD="\[\033[1;33m\]"
+PURPLE_BOLD="\[\033[1;35m\]"
 
 # PROMPT Command 
 export PROMPT_COMMAND="echo -ne '\033]0;${USER}@${HOSTNAME}\007';$PROMPT_COMMAND"
@@ -27,7 +27,7 @@ if [ -f ~/bin/git-prompt.sh ]; then
   GIT_PS1_DESCRIBE_STYLE="branch"
   GIT_PS1_SHOWUNTRACKEDFILES="true"
   export GIT_PS1_SHOWUPSTREAM GIT_PS1_SHOWDIRTYSTATE GIT_PS1_DESCRIBE_STYLE GIT_PS1_SHOWUNTRACKEDFILES
-  export PS1="[\[\033[01;35m\]sander@\h\[\033[00m\]]:\W\[\033[01;33m\]$(__git_ps1)\[\033[00m\]\$ "
+  export PS1="[${PURPLE_BOLD}\u@\h${NO_COLOR}]:\W${YELLOW_BOLD}$(__git_ps1)${NO_COLOR}\$ "
 else
-  export PS1="[${PURPLE}\u@\h${NO_COLOR}]:\W$ "
+  export PS1="[${PURPLE_BOLD}\u@\h${NO_COLOR}]:\W$ "
 fi
