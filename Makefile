@@ -35,8 +35,9 @@ install:
 clean:
     # remove the links
 	rm -f ${MY_HOME}/.bash_profile
+	rm -f ${MY_HOME}/.bash
 	rm -f ${MY_HOME}/bin
     # restore any backups previously created
-	cp -p ${MY_HOME}/.bash_profile.PRE_DOTFILES ${MY_HOME}/.bash_profile
+	mv -p ${MY_HOME}/.bash_profile.PRE_DOTFILES ${MY_HOME}/.bash_profile
 
 .PHONY: install clean
