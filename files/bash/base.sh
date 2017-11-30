@@ -15,17 +15,5 @@ elif [ -f /etc/bash_completion ]; then
   . /etc/bash_completion
 fi
 
-# Aliases
-alias rm='rm -i'
-alias ls='ls -G'
-alias ll='ls -G -l'
-alias la='ls -G -la'
-alias lt='ls -G -ltr'
-if [ -f ~/TMG/bin/ssh-or-copy-id.sh ]; then
-  alias ssh='~/TMG/bin/ssh-or-copy-id.sh'
-fi
-
-# PATH with my scrippies
-PATH=$PATH:~/TMG/bin
-
-export PATH
+# Extend PATH with personal bin dir.
+expor PATH=$PATH:~/bin
