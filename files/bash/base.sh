@@ -16,4 +16,4 @@ elif [ -f /etc/bash_completion ]; then
 fi
 
 # Extend PATH with personal bin dir.
-expor PATH=$PATH:~/bin
+export PATH=$PATH:~/bin

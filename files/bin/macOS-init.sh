@@ -5,6 +5,7 @@
 # https://github.com/mathiasbynens/dotfiles
 # https://github.com/Wilto/dotfiles/blob/master/bin/osxdefaults
 # https://github.com/geerlingguy/dotfiles/blob/master/.osx
+# https://github.com/hjuutilainen/dotfiles/blob/master/bin/osx-user-defaults.sh
 
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
@@ -13,6 +14,8 @@ osascript -e 'tell application "System Preferences" to quit'
 # -----------------------------------------------------------------------------
 # SHEETS/PANELS
 # -----------------------------------------------------------------------------
+
+echo "Setting Sheet & Panel preferences"
 
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
@@ -31,6 +34,8 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 # -----------------------------------------------------------------------------
 # KEYBOARD & MOUSE
 # -----------------------------------------------------------------------------
+
+echo "Setting Keyboard & mouse preferences"
 
 # Enable full keyboard access for all controls
 # (e.g. enable Tab in modal dialogs)
@@ -79,6 +84,8 @@ defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryCli
 # SECURITY
 # -----------------------------------------------------------------------------
 
+echo "Setting Security preferences"
+
 # Require password immediately after sleep or screen saver begins
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
@@ -90,6 +97,8 @@ defaults write com.apple.finder EmptyTrashSecurely -bool true
 # SCREENSHOTS
 # -----------------------------------------------------------------------------
 
+echo "Setting Screenshots preferences"
+
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
 defaults write com.apple.screencapture type -string "png"
 
@@ -98,8 +107,19 @@ mkdir ~/Pictures/Screenshots
 defaults write com.apple.screencapture location -string "$HOME/Pictures/Screenshots"
 
 # -----------------------------------------------------------------------------
+# SCREENSAVER
+# -----------------------------------------------------------------------------
+
+echo "Setting Screensaver preferences"
+
+# Screen Saver: Flurry
+#defaults -currentHost write com.apple.screensaver moduleDict -dict moduleName -string "Flurry" path -string "/System/Library/Screen Savers/Flurry.saver" type -int 0
+
+# -----------------------------------------------------------------------------
 # Finder
 # -----------------------------------------------------------------------------
+
+echo "Setting Finder preferences"
 
 # Set default Finder path.
 # For desktop, use `PfDe`.
@@ -189,6 +209,8 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 # DOCK
 # -----------------------------------------------------------------------------
 
+echo "Setting Dock preferences"
+
 # Enable highlight hover effect for the grid view of a stack (Dock)
 defaults write com.apple.dock mouse-over-hilite-stack -bool true
 
@@ -218,6 +240,8 @@ defaults write com.apple.dock magnification -int 1
 # -----------------------------------------------------------------------------
 # DASHBOARD & SPACES & HOTCORNER
 # -----------------------------------------------------------------------------
+
+echo "Setting Dashboard & Spaces preferences"
 
 # Disable Dashboard
 defaults write com.apple.dashboard mcx-disabled -bool true
@@ -256,6 +280,11 @@ defaults write com.apple.dock wvous-br-modifier -int 0
 # -----------------------------------------------------------------------------
 # SAFARI & WEBKIT                                                             #
 # -----------------------------------------------------------------------------
+
+echo "Setting Safari preferences"
+
+# Show status bar
+defaults write com.apple.Safari ShowStatusBar -bool true
 
 # Privacy: don’t send search queries to Apple
 defaults write com.apple.Safari UniversalSearchEnabled -bool false
@@ -322,6 +351,8 @@ defaults write com.apple.Safari InstallExtensionUpdatesAutomatically -bool true
 # MAIL
 # -----------------------------------------------------------------------------
 
+echo "Setting Apple Mail preferences"
+
 # Copy email addresses as `foo@example.com` instead of `Foo Bar <foo@example.com>` in Mail.app
 defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
 
@@ -339,6 +370,8 @@ defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
 # -----------------------------------------------------------------------------
 # Terminal & iTerm2
 # -----------------------------------------------------------------------------
+
+echo "Setting Terminal & iTerm2 preferences"
 
 # Only use UTF-8 in Terminal.app
 defaults write com.apple.terminal StringEncodings -array 4
@@ -361,6 +394,11 @@ open "files/iterm/cobalt2.itermcolors"
 # -----------------------------------------------------------------------------
 # OTHER
 # -----------------------------------------------------------------------------
+
+echo "Setting Other preferences"
+
+# 24-Hour Time
+defaults write NSGlobalDomain AppleICUForce12HourTime -bool false
 
 # Save to disk (not to iCloud) by default
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
@@ -395,6 +433,8 @@ defaults write com.apple.iTunes DeviceBackupsDisabled -bool true
 # RESTART ALL THE THINGS
 # Restart OS X services after running the script
 # -----------------------------------------------------------------------------
+
+echo "Restarting affected applications"
 
 for app in "Activity Monitor" "Dashboard" "Dock" "Finder" "SystemUIServer" "Terminal" "Mail" "iTunes"; do
   killall "$app" > /dev/null 2>&1

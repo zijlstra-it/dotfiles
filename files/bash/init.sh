@@ -1,10 +1,7 @@
 # ~/git/dotfiles/bash/init.sh
 #
 
-DOTFILES="base prompt aliases other"
-
-for dotfile in ${DOTFILES} ; do
-    if [ -f ${HOME}/.bash/${dotfile} ]; then
-        source ${HOME}/.bash/${dotfile}.sh
-    fi
-done
+source ~/.bash/base.sh
+source ~/.bash/prompt.sh
+source ~/.bash/aliases.sh
+source ~/.bash/other.sh
