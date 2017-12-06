@@ -1,0 +1,31 @@
+[user]
+    name = Sander Zijlstra
+    email = sander@zijlstra.it
+
+[core]
+    excludesfile = ~/.gitignore
+    autocrlf = input
+    pager = less -FSRX
+    editor = vim
+
+[color]
+    branch = auto
+    diff = auto
+    status = auto
+    ui = auto
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "diff"]
+    meta = yellow
+    frag = magenta bold
+    old = red bold
+    new = green bold
+
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = red
