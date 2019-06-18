@@ -27,7 +27,7 @@ if [ -f ~/bin/git-prompt.sh ]; then
   GIT_PS1_DESCRIBE_STYLE="branch"
   GIT_PS1_SHOWUNTRACKEDFILES="true"
   export GIT_PS1_SHOWUPSTREAM GIT_PS1_SHOWDIRTYSTATE GIT_PS1_DESCRIBE_STYLE GIT_PS1_SHOWUNTRACKEDFILES
-  export PS1='\[\033[1;33m\]$(__git_ps1 "(%s)")\[\033[1;37m\][\[\033[1;35m\]\u@\h\[\033[1;37m\] \W]\$ '
+  export PS1='\[\033[1;33m\]$(__git_ps1 "(%s) ")\[\033[1;37m\][\[\033[1;35m\]\u@\h\[\033[1;37m\] \W]\$ '
 else
   export PS1="[${PURPLE_BOLD}\u@\h${NO_COLOR}]:\W$ "
 fi
