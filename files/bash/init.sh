@@ -8,3 +8,4 @@ for dotfile in ${DOTFILES} ; do
         source ${HOME}/.bash/${dotfile}.sh
     fi
 done
+export PATH="/usr/local/opt/terraform@0.11/bin:$PATH"
