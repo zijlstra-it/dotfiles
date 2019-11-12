@@ -9,3 +9,4 @@ for dotfile in ${DOTFILES} ; do
     fi
 done
 export PATH="/usr/local/opt/terraform@0.11/bin:$PATH"
+export BASH_SILENCE_DEPRECATION_WARNING=1
