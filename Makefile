@@ -18,7 +18,6 @@ help:
 	@echo "  clean"
 
 install:
-	@cp -p ${MY_HOME}/.bash_profile ${MY_HOME}/.bash_profile.PRE_DOTFILES
 	@/bin/ln -nsf ${MY_HOME}/git/dotfiles/files/bash/init.sh ${MY_HOME}/.bash_profile
 	@/bin/ln -nsf ${MY_HOME}/git/dotfiles/files/bash ${MY_HOME}/.bash
 	@/bin/ln -nsf ${MY_HOME}/git/dotfiles/files/bin ${MY_HOME}/bin
@@ -37,7 +36,5 @@ clean:
 	rm -f ${MY_HOME}/.bash_profile
 	rm -f ${MY_HOME}/.bash
 	rm -f ${MY_HOME}/bin
-    # restore any backups previously created
-	mv -f ${MY_HOME}/.bash_profile.PRE_DOTFILES ${MY_HOME}/.bash_profile
-
+	
 .PHONY: install clean
