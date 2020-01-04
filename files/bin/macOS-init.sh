@@ -45,27 +45,14 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 defaults write -g com.apple.mouse.scaling 2
 
 # Faster key repetition
-defaults write NSGlobalDomain InitialKeyRepeat -int 0
-defaults write NSGlobalDomain KeyRepeat -int 0
-
-# Use scroll gesture with the Ctrl (^) modifier key to zoom
-defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
-defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
-
-# Disable "natural" scrolling
-defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
-
-# Follow the keyboard focus while zoomed in
-defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
-
-# Disable press-and-hold for keys in favor of key repeat
-#defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
+defaults write NSGlobalDomain KeyRepeat -int 2
 
 # Set language and text formats
 # Note: if you’re in the US, replace `EUR` with `USD`, `Centimeters` with
 # `Inches`, `en_GB` with `en_US`, and `true` with `false`.
 defaults write NSGlobalDomain AppleLanguages -array "en-NL" "nl-NL"
-defaults write NSGlobalDomain AppleLocale -string "en_NLB@currency=EUR"
+defaults write NSGlobalDomain AppleLocale -string "en_NL@currency=EUR"
 defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
 defaults write NSGlobalDomain AppleMetricUnits -bool true
 
@@ -112,8 +99,12 @@ defaults write com.apple.screencapture location -string "$HOME/Pictures/Screensh
 
 echo "Setting Screensaver preferences"
 
-# Screen Saver: Flurry
-#defaults -currentHost write com.apple.screensaver moduleDict -dict moduleName -string "Flurry" path -string "/System/Library/Screen Savers/Flurry.saver" type -int 0
+# Screen Saver: Vintage Prints from iCloud folder
+defaults -currentHost write com.apple.screensaver moduleDict -dict moduleName -string "iLifeSlideshows" path -string "/System/Library/Frameworks/ScreenSaver.framework/PlugIns/iLifeSlideshows.appex" type -int 0
+
+# Require password immediately after sleep or screen saver begins
+defaults write com.apple.screensaver askForPassword -int 1
+defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 # -----------------------------------------------------------------------------
 # Finder
@@ -232,10 +223,8 @@ defaults write com.apple.dock show-process-indicators -bool true
 # Set Dock zoom size
 defaults write com.apple.dock magnification -int 1
 
-# Add a spacer to the left side of the Dock (where the applications are)
-#defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
-# Add a spacer to the right side of the Dock (where the Trash is)
-#defaults write com.apple.dock persistent-others -array-add '{tile-data={}; tile-type="spacer-tile";}'
+# Don’t show recent applications in Dock
+defaults write com.apple.dock show-recents -bool false
 
 # -----------------------------------------------------------------------------
 # DASHBOARD & SPACES & HOTCORNER
@@ -356,9 +345,6 @@ echo "Setting Apple Mail preferences"
 # Copy email addresses as `foo@example.com` instead of `Foo Bar <foo@example.com>` in Mail.app
 defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
 
-# Add the keyboard shortcut ⌘ + Enter to send an email in Mail.app
-defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" -string "@\\U21a9"
-
 # Display emails in threaded mode, sorted by date (oldest at the top)
 #defaults write com.apple.mail DraftsViewerAttributes -dict-add "DisplayInThreadedMode" -string "yes"
 #defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortedDescending" -string "yes"
@@ -387,6 +373,7 @@ defaults write com.apple.terminal SecureKeyboardEntry -bool true
 
 # Don’t display the annoying prompt when quitting iTerm
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false
+defaults write com.googlecode.iterm2 OnlyWhenMoreTabs -int 0
 
 # Install the Cobalt2 theme for iTerm
 open "files/iterm/cobalt2.itermcolors"
@@ -404,7 +391,7 @@ defaults write NSGlobalDomain AppleICUForce12HourTime -bool false
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
 # Set a custom wallpaper image. 
-osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/Library/Desktop Pictures/Yosemite 5.jpg"'
+#osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/Library/Desktop Pictures/Yosemite 5.jpg"'
 
 # Prevent Time Machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
@@ -436,7 +423,7 @@ defaults write com.apple.iTunes DeviceBackupsDisabled -bool true
 
 echo "Restarting affected applications"
 
-for app in "Activity Monitor" "Dashboard" "Dock" "Finder" "SystemUIServer" "Terminal" "Mail" "iTunes"; do
+for app in "Activity Monitor" "Dashboard" "Dock" "Finder" "SystemUIServer" "Terminal" "Mail" "iTunes" "iterm"; do
   killall "$app" > /dev/null 2>&1
 done
 
