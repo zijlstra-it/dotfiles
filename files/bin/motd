@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+
+echo "------------------------------------------------"
+echo "system:       `uname -srp`"
+echo "hostname:     `hostname`"
+echo "IP:           `dig +short myip.opendns.com @resolver1.opendns.com`"
+echo "date:         `TZ=CET date`"
+echo "------------------------------------------------"
+echo "python:       `python -c "import platform; print(platform.python_version())"`"
+echo "------------------------------------------------"
+echo
