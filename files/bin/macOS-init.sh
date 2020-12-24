@@ -237,6 +237,12 @@ defaults write com.apple.dock magnification -int 1
 # Add a spacer to the right side of the Dock (where the Trash is)
 #defaults write com.apple.dock persistent-others -array-add '{tile-data={}; tile-type="spacer-tile";}'
 
+# No delay on autohide the Dock
+defaults write com.apple.dock autohide-delay -int 0
+
+# Unhide the Dock quicker, aka make the animation shorted
+defaults write com.apple.dock autohide-time-modifier -float 0.4
+
 # -----------------------------------------------------------------------------
 # DASHBOARD & SPACES & HOTCORNER
 # -----------------------------------------------------------------------------
@@ -304,7 +310,7 @@ defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
 defaults write com.apple.Safari HomePage -string "about:blank"
 
 # Prevent Safari from opening ‘safe’ files automatically after downloading
-defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
+#defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
 
 # Allow hitting the Backspace key to go to the previous page in history
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool false
@@ -389,7 +395,7 @@ defaults write com.apple.terminal SecureKeyboardEntry -bool true
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 
 # Install the Cobalt2 theme for iTerm
-open "files/iterm/cobalt2.itermcolors"
+open "~/git/dorfiles/files/iterm/cobalt2.itermcolors"
 
 # -----------------------------------------------------------------------------
 # OTHER
@@ -404,7 +410,7 @@ defaults write NSGlobalDomain AppleICUForce12HourTime -bool false
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
 # Set a custom wallpaper image. 
-osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/Library/Desktop Pictures/Yosemite 5.jpg"'
+#osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/Library/Desktop Pictures/Yosemite 5.jpg"'
 
 # Prevent Time Machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
@@ -428,6 +434,24 @@ defaults write com.apple.iTunes dontAutomaticallySyncIPods -bool true
 
 # Disable backups on iTunes
 defaults write com.apple.iTunes DeviceBackupsDisabled -bool true
+
+# Disable the crash reporter
+defaults write com.apple.CrashReporter DialogType -string "none"
+
+# Disable automatic capitalization as it’s annoying when typing code
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+
+# Disable smart dashes as they’re annoying when typing code
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
+# Disable automatic period substitution as it’s annoying when typing code
+defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+
+# Disable smart quotes as they’re annoying when typing code
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+
+# Disable auto-correct
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 # -----------------------------------------------------------------------------
 # RESTART ALL THE THINGS

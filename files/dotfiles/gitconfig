@@ -1,6 +1,6 @@
 [user]
     name = Sander Zijlstra
-    email = sander@zijlstra.it
+    email = sander.zijlstra@surfsara.nl
 
 [core]
     excludesfile = ~/.gitignore
@@ -31,4 +31,9 @@
     untracked = red
 
 [alias]
-   prune-branches = !git remote prune origin && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D
+    prune-branches = !git remote prune origin && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D
+    return-to-master = !git checkout master && git pull && git prune-branches
+    return-to-dev = !git checkout dev && git pull && git prune-branches
+    lol = log --decorate --oneline --graph
+    lo = log --decorate --oneline
+    loh = !git lo --decorate --oneline | head -1
